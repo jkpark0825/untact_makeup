@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+
+.title{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:40px;
+  display:flex;
+  background-color:white;
+}
+
+.author{
+  margin-left:10px;
+}
+
+.nav{
+  height:70px;
+  border-bottom: 1px solid black;
+  display:flex;
+  margin-right : auto;
+  background-color: #ecf7fc;
+}
+.nav-items{
+margin-left:10px;
+margin-top:40px;
+}
+.middletitle{
+font-family: Arial, Helvetica, sans-serif;
+text-align:center;
+font-size:30px;
+font-weight:bold;
+}
+
+.subtitle{
+text-align:center;
+font-size:20px;
+font-weight:bold;
+margin-top:10px;
+}
+.subtitle2{
+text-align:center;
+font-size:10px;
+font-weight:bold;
+margin-top:5px;
+width:300px;
+  margin: 0 auto;
+}
+.main{
+border-radius :4px;
+display:flex;
+font-size:20px;
+font-weight:bold;
+margin-top:20px;
+border: 3px solid black;
+display:flex;
+padding-top: 10px;
+padding-bottom:10px;
+background-image : url("/static/uploads/background2.jpg");
+}
+.image{
+border-radius :4px;
+  margin-left:150px;
+  width:300px;
+  height:300px;
+  diplay:flex;
+  border: 3px solid black;
+}
+.image-title{
+  font-size:20px;
+  background: rgb(232,232,232);
+  text-align:center;
+  height:20px;
+  line-height:10px;
+}
+.button0{
+background-image : url("/static/uploads/blue.jpg");
+border-radius :4px;
+border: 1px solid black;
+width:250px;
+height:260px;
+margin-top:20px;
+margin-left:20px;
+}
+.button1{
+background-image : url("/static/uploads/blue.jpg");
+border-radius :4px;
+border: 1px solid black;
+width:250px;
+height:260px;
+margin-top:20px;
+margin-left:20px;
+}
+dl{
+background-color:white;
+font-family: Arial, Helvetica, sans-serif;
+border-radius :4px;
+border: 1px solid black;
+margin-left:5px;
+margin-right:5px;
+padding-left:2px;
+}
+.platform0{
+  display:flex;
+}
+.platform1{
+  display:flex;
+}
+.makeupimage{
+border-radius :4px;
+border: 1px solid black;
+width:250px;
+height:260px;
+margin-top:20px;
+margin-left:50px;
+}
+
+.muimage{
+  font-size:20px;
+  background: rgb(232,232,232);
+  text-align:center;
+  height:20px;
+  line-height:20px;
+}
+.images0{
+display:flex;
+margin-left:10%;
+}
+.images1{
+display:flex;
+margin-left:10%;
+}
+.part1{
+background-image : url("/static/uploads/sky.jpg");
+padding-bottom:20px;
+}
+      </style>
+  </head>
+  <body>
+<div class="part1">
+    <div class = "title">UNTACT MAKEUP</div>
+    <div class="author">joonkue.Park</div>
+    <div class="nav">
+    <div class="nav-items">home1</div>
+    <div class="nav-items">home2</div>
+    <div class="nav-items">home3</div>
+    </div>
+    <div class= "main1">
+    <div class = "middletitle">Experience untact makeup</div>
+    <div class="subtitle">About</div>
+    <div class="subtitle2">streaming your style to reflect your individuality and hope to make your fit better. start in 2020, you can make your own makeup style without any tacting.</div>
+    </div>
+
+    <div class="main">
+    <div class= "image">
+      <div class="image-title">original</div>
+      <div class="video"><img src="{{ url_for('video_feed0' , filename3= filename3)}}" width="300" height="280"></div>
+      </div>
+    <div class = "image">
+      <div class="image-title">align</div>
+      <div class="video"><img src="{{ url_for('video_feed3') }}" width="300" height="280"></div>
+      </div>
+    <div class= "image">
+      <div class="image-title">makeup</div>
+       {% if filename%}
+      <div class="video"><img src="{{ url_for('video_feed4') }}" width="300" height="280"></div>
+       {% endif %}
+       {% if not filename%}
+       <div class="video"><img src="/static/uploads/start.png" width="300" height="280"></div>
+       {% endif %}
+      </div>
+    </div>
+</div>
+
+{% if not filename%}
+<div class="platform0">
+<div class="button0">
+<form method="post" action="/" enctype="multipart/form-data">  
+<dl>your image :<input type="file"  id="yourface" name="file3" autocomplete="off" required></dl>
+<dl>Skin image : <input type="file" id="skin" name="file" autocomplete="off" required></dl>
+    <dl>Lip image :<input type="file" id="lip" name="file1" autocomplete="off" required></dl>
+    <dl>Eyes image :<input type="file" id="eye" name="file2" autocomplete="off" required></dl>
+     <dl><p><input type="submit" value="Submit" ></p></dl>
+</form>
+</div>
+<div class="images0">
+<div class="makeupimage">
+<div class="muimage">skin</div>
+<div class="putimage"><img src="/static/uploads/start.png" width="250" height="240"></div>
+</div>
+<div class="makeupimage">
+  <div class="muimage">lip</div>
+<div class="putimage"><img src="/static/uploads/start.png" width="250" height="240"></div>
+</div>
+<div class="makeupimage">
+  <div class="muimage">eye</div>
+<div class="putimage"><img src="/static/uploads/start.png" width="250" height="240"></div>
+  </div>
+</div>
+</div>
+{% endif %}
+
+{% if filename%}
+<div class="platform1">
+<div class="button1">
+<form method="post" action="/" enctype="multipart/form-data">  
+<dl>your image :<input type="file" id="yourface" name="file3" autocomplete="off" required></dl>
+<dl>Skin image :<input type="file"  name="file" autocomplete="off" required></dl>
+    <dl>Lip image :<input type="file"  name="file1" autocomplete="off" required></dl>
+    <dl>Eyes image :<input type="file" name="file2" autocomplete="off" required></dl>
+     <dl><p><input type="submit" value="Submit" ></p></dl>
+</form>
+</div>
+<div class="images1">
+<div class="makeupimage">
+<div class="muimage">skin</div>
+<div class="putimage"><img src="{{ url_for('display_image', filename=filename) }}" width="250" height="240"></div>
+</div>
+<div class="makeupimage">
+  <div class="muimage">lip</div>
+<div class="putimage"><img src="{{ url_for('display_image1', filename1=filename1) }}" width="250" height="240"></div>
+</div>
+<div class="makeupimage">
+  <div class="muimage">eye</div>
+<div class="putimage"><img src="{{ url_for('display_image2', filename2=filename2) }}" width="250" height="240"></div>
+  </div>
+</div>
+</div>
+{% endif %}
+
+  </body>
+</html>
